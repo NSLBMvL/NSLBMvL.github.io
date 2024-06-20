@@ -1,0 +1,224 @@
+body{
+    background-color: black;
+}
+.overlay {
+    width: 100vw;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; /* Ensure no default margin on body */
+    background-color: black;
+}
+
+.main {
+    background-color: #1890f8;
+    background-image: url("res/NSLB-BG.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 900px;
+    max-width: 1440px;
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Ensure .main takes full width within max-width */
+    height: 100%; /* Ensure .main takes full height within max-height */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+.clouds-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    max-width: 1440px;
+    max-height: 900px;
+}
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 200%; 
+    max-width: 200%;
+    height: 100vh;
+    max-height: 900px;
+    z-index: 1;
+    animation: moveClouds 30s linear infinite;
+}
+.container-img {
+  
+    position: absolute;
+    z-index: 2;
+    top: 0%; /* Adjust this value to move the logo up or down */
+    animation: moveLogo 3s ease-in-out infinite;
+    
+}
+
+.logo {
+    max-height: 500px;
+}
+.platforms-L {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    max-width: 300px; /* Adjust as needed */
+    max-height: 500px;
+}
+.platforms-R {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateX(120px);
+    max-width: 300px; /* Adjust as needed */
+    max-height: 500px;
+}
+
+
+
+
+.platforms-L, .platforms-R, .pipes-1, .pipes-2, .pipes-3, .pipes-4, .pipes-5 {
+    position: absolute;
+    z-index: 2; /* Ensure platforms and pipes are above the background and clouds */
+}
+
+.pipes-1 {
+    bottom: -30px;
+    left: 250px;
+}
+.pipes-2 {
+    bottom: -30px;
+    left: 425px;
+}
+.pipes-3 {
+    bottom: -30px;
+    left: calc(50% - 166px / 2);
+}
+.pipes-4 {
+    bottom: -55px;
+    right: 425px;
+}
+.pipes-5 {
+    bottom: -58px;
+    right: 250px;
+}
+
+/* z index doesnt seem to affect elements*/
+.pipes-1:hover{
+    z-index: 3;
+    
+    bottom: 0px;
+    
+}
+.pipes-2:hover{
+    z-index: 3;
+
+    bottom: 0px;
+    
+}
+.pipes-3:hover{
+    z-index: 3;
+
+    bottom: 0px;
+    
+}
+.pipes-4:hover{
+    z-index: 3;
+
+    bottom: -25px;
+    
+}
+.pipes-5:hover{
+    z-index: 3;
+
+    bottom: -28px;
+    
+}
+
+
+@keyframes moveClouds {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+@keyframes moveLogo {
+    0% {
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(-2.5%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     /* Black background */
+    clip-path: circle(100% at center);
+    transition: clip-path 1s ease-in-out; /* Transition clip-path and opacity */
+    z-index: 1000; /* Ensure overlay appears on top */
+}
+
+
+.overlay.open {
+    clip-path: circle(0% at center); 
+
+}
+/* responsive web sh*** */
+
+@media (max-width: 1300px) {
+    .platforms-L,
+    .platforms-R {
+        display: none;
+    }
+    
+    .pipes-1 {
+        left: calc(10% - 155px / 2);
+    }
+    .pipes-2 {
+        left: calc(30% - 155px / 2);
+    }
+    .pipes-3 {
+        left: calc(50% - 166px / 2);
+    }
+    .pipes-4 {
+        right: calc(30% - 155px / 2);
+    }
+    .pipes-5 {
+        right: calc(10% - 155px / 2);
+    }
+}
+
+@media (max-width: 800px) {
+    
+
+    .pipes-1.img-fluid{ 
+        width: 50%;
+    }
+    .pipes-2 image{
+        left: calc(30% - 155px / 2);
+        size: 50%;
+    }
+    .pipes-3 image{
+        left: calc(50% - 166px / 2);
+        size: 50%;
+    }
+    .pipes-4 image{
+        right: calc(30% - 155px / 2);
+        size: 50%;
+    }
+    .pipes-5 image{
+        right: calc(10% - 155px / 2);
+        size: 50%;
+    }
+}
